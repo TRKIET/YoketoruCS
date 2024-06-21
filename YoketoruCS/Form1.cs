@@ -4,7 +4,7 @@ namespace YoketoruCS
     {
         enum State
         {
-            None  = -1,
+            None = -1,
             Title,
             Game,
             Gameover,
@@ -14,14 +14,12 @@ namespace YoketoruCS
         //<summary>
         //éüÇ…êÿÇËë÷Ç¶ÇΩÇ¢èÛë‘
         //</summary>
-        State GetState = State.Title;
+        State nextState = State.Title;
 
         //<summry>
         //åªç›ÇÃèÛë‘
         //</summary>
         State currentState = State.None;
-
-
 
         public Form1()
         {
@@ -29,6 +27,59 @@ namespace YoketoruCS
         }
 
         private void timer1_Tick(object sender, EventArgs e)
+        {
+            InitState();
+            UpdateState();
+        }
+
+        void InitState()
+        {
+            if (nextState == State.None)
+            {
+                return;
+            }
+            currentState = nextState;
+            nextState = State.None;
+
+            //èâä˙âªèàóù
+            switch (currentState)
+            {
+                case State.Title:
+                    labelGameover.Visible = false;
+                    buttonToTitle.Visible = false;
+                    break;
+
+
+                case State.Game:
+                    labelTitle.Visible = false;
+                    buttonStart.Visible = false;
+                    break;
+            }
+        }
+
+        void UpdateState()
+        {
+            switch (currentState) 
+            {
+                case State.Game:
+                    UpdateGame();
+                        break;
+
+            }
+        }
+
+        void UpdateGame()
+        {
+
+        }
+
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            nextState = State.Game;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
