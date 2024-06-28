@@ -35,6 +35,12 @@
             labelGameover = new Label();
             buttonToTitle = new Button();
             labelClear = new Label();
+            labelScore = new Label();
+            labelTimer = new Label();
+            labelPlayer = new Label();
+            label1 = new Label();
+            labelItem = new Label();
+            labelEnemy = new Label();
             SuspendLayout();
             // 
             // timer1
@@ -89,19 +95,86 @@
             // labelClear
             // 
             labelClear.AutoSize = true;
-            labelClear.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelClear.Location = new Point(297, 338);
+            labelClear.Font = new Font("Yu Gothic UI", 36F, FontStyle.Regular, GraphicsUnit.Point);
+            labelClear.Location = new Point(426, 254);
             labelClear.Name = "labelClear";
-            labelClear.Size = new Size(60, 30);
+            labelClear.Size = new Size(136, 65);
             labelClear.TabIndex = 4;
             labelClear.Text = "Clear";
             labelClear.Click += label1_Click_1;
+            // 
+            // labelScore
+            // 
+            labelScore.AutoSize = true;
+            labelScore.Font = new Font("Yu Gothic UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelScore.Location = new Point(837, 451);
+            labelScore.Name = "labelScore";
+            labelScore.Size = new Size(33, 40);
+            labelScore.TabIndex = 5;
+            labelScore.Text = "0";
+            // 
+            // labelTimer
+            // 
+            labelTimer.AutoSize = true;
+            labelTimer.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTimer.ForeColor = Color.Black;
+            labelTimer.Location = new Point(656, 438);
+            labelTimer.Name = "labelTimer";
+            labelTimer.Size = new Size(53, 32);
+            labelTimer.TabIndex = 6;
+            labelTimer.Text = "200";
+            // 
+            // labelPlayer
+            // 
+            labelPlayer.AutoSize = true;
+            labelPlayer.Font = new Font("Yu Gothic UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelPlayer.Location = new Point(334, 441);
+            labelPlayer.Name = "labelPlayer";
+            labelPlayer.Size = new Size(130, 37);
+            labelPlayer.TabIndex = 7;
+            labelPlayer.Text = "(´・∀・｀ )";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(54, 64);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 8;
+            label1.Text = "label1";
+            label1.Click += label1_Click_2;
+            // 
+            // labelItem
+            // 
+            labelItem.AutoSize = true;
+            labelItem.Font = new Font("Yu Gothic UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            labelItem.Location = new Point(525, 428);
+            labelItem.Name = "labelItem";
+            labelItem.Size = new Size(52, 45);
+            labelItem.TabIndex = 9;
+            labelItem.Text = "★";
+            // 
+            // labelEnemy
+            // 
+            labelEnemy.AutoSize = true;
+            labelEnemy.Font = new Font("Yu Gothic UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            labelEnemy.Location = new Point(525, 351);
+            labelEnemy.Name = "labelEnemy";
+            labelEnemy.Size = new Size(52, 45);
+            labelEnemy.TabIndex = 10;
+            labelEnemy.Text = "的";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(944, 501);
+            Controls.Add(labelEnemy);
+            Controls.Add(labelItem);
+            Controls.Add(label1);
+            Controls.Add(labelPlayer);
+            Controls.Add(labelTimer);
+            Controls.Add(labelScore);
             Controls.Add(labelClear);
             Controls.Add(buttonToTitle);
             Controls.Add(labelGameover);
@@ -121,5 +194,11 @@
         private Label labelGameover;
         private Button buttonToTitle;
         private Label labelClear;
+        private Label labelScore;
+        private Label labelTimer;
+        private Label labelPlayer;
+        private Label label1;
+        private Label labelItem;
+        private Label labelEnemy;
     }
 }

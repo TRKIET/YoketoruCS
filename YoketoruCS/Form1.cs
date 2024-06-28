@@ -11,6 +11,18 @@ namespace YoketoruCS
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vKey);
 
+        static int PlayerMax => 1;
+        static int EnemyMax => 4;
+        static int ItemMax => 4;
+
+        static int PlayerIndex => 0;
+        static int EnemyIndex => PlayerIndex + PlayerMax;
+        static int ItemIndex => EnemyIndex + EnemyMax;
+        static int LabelMax => ItemIndex + EnemyMax;
+
+        Label[] labels = new Label[LabelMax];
+
+
         enum State
         {
             None = -1,
@@ -33,6 +45,46 @@ namespace YoketoruCS
         public Form1()
         {
             InitializeComponent();
+
+            for (int i = 0; i < LabelMax; i++)
+            {
+                labels[i] = new Label();
+                labels[i].AutoSize = true;
+                Controls.Add(labels[i]);
+
+                //Text,Font,ForeColorを種類ごとに設定したい
+
+                //プレイヤーの時
+                //iがの時
+
+                //敵の時
+                //iがの時
+
+                //アイテムの時
+                //iがの時
+
+
+                if (i == PlayerIndex)
+                {
+                    labels[i].Text = labelPlayer.Text;
+                    labels[i].Font = labelPlayer.Font;
+                    labels[i].ForeColor = labelPlayer.ForeColor;
+                }
+                if(i == EnemyIndex) 
+                {
+                    labels[i].Text= labelEnemy.Text;
+                    labels[i].Font = labelEnemy.Font;
+                    labels[i].ForeColor= labelEnemy.ForeColor;
+                }
+                if (i == ItemIndex) 
+                {
+                    labels[i].Text=labelItem.Text;
+                    labels[i].Font=labelItem.Font;
+                    labels[i].ForeColor=labelItem.ForeColor;
+
+                }
+
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -122,6 +174,11 @@ namespace YoketoruCS
         private void label1_Click_1(object sender, EventArgs e)
         {
             nextState = State.Title;
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }
