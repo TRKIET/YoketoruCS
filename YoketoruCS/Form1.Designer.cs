@@ -34,6 +34,7 @@
             buttonStart = new Button();
             labelGameover = new Label();
             buttonToTitle = new Button();
+            labelClear = new Label();
             SuspendLayout();
             // 
             // timer1
@@ -77,7 +78,7 @@
             // buttonToTitle
             // 
             buttonToTitle.Font = new Font("Yu Gothic UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonToTitle.Location = new Point(436, 189);
+            buttonToTitle.Location = new Point(586, 189);
             buttonToTitle.Name = "buttonToTitle";
             buttonToTitle.Size = new Size(187, 85);
             buttonToTitle.TabIndex = 3;
@@ -85,11 +86,23 @@
             buttonToTitle.UseVisualStyleBackColor = true;
             buttonToTitle.Click += buttonToTitle_Click;
             // 
+            // labelClear
+            // 
+            labelClear.AutoSize = true;
+            labelClear.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelClear.Location = new Point(297, 338);
+            labelClear.Name = "labelClear";
+            labelClear.Size = new Size(60, 30);
+            labelClear.TabIndex = 4;
+            labelClear.Text = "Clear";
+            labelClear.Click += label1_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(944, 501);
+            Controls.Add(labelClear);
             Controls.Add(buttonToTitle);
             Controls.Add(labelGameover);
             Controls.Add(buttonStart);
@@ -107,5 +120,6 @@
         private Button buttonStart;
         private Label labelGameover;
         private Button buttonToTitle;
+        private Label labelClear;
     }
 }

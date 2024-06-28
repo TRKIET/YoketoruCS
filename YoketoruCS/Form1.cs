@@ -54,11 +54,12 @@ namespace YoketoruCS
             switch (currentState)
             {
                 case State.Title:
-                    labelGameover.Visible = true;
-                    buttonToTitle.Visible = true;
+                    labelTitle.Visible = true;
+                    buttonStart.Visible = true;
 
-                    labelGameover.Visible= false;
-                    buttonToTitle.Visible= false; 
+                    labelGameover.Visible = false;
+                    buttonToTitle.Visible = false;
+                    labelClear.Visible = false;
                     break;
 
 
@@ -70,6 +71,10 @@ namespace YoketoruCS
                 case State.Gameover:
                     labelGameover.Visible = true;
                     buttonToTitle.Visible = true;
+                    break;
+
+                case State.Clear:
+                    labelClear.Visible = true;
                     break;
             }
         }
@@ -91,6 +96,11 @@ namespace YoketoruCS
             {
                 nextState = State.Gameover;
             }
+
+            if (GetAsyncKeyState((int)Keys.C) < 0)
+            {
+                nextState = State.Clear;
+            }
         }
 
 
@@ -105,6 +115,11 @@ namespace YoketoruCS
         }
 
         private void buttonToTitle_Click(object sender, EventArgs e)
+        {
+            nextState = State.Title;
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
         {
             nextState = State.Title;
         }
