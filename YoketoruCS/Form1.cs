@@ -203,6 +203,10 @@ namespace YoketoruCS
 
         void UpdateChrs()
         {
+            var fpos =PointToClient(MousePosition);
+
+
+            //敵とアイテムの移動
             for (int i = EnemyIndex; i < LabelMax; i++)
             {
                 labels[i].Left += vx[i];
@@ -224,6 +228,27 @@ namespace YoketoruCS
                 else if (labels[i].Top > (ClientSize.Height - labels[i].Height))
                 {
                     vy[i] = -Math.Abs(vy[i]);
+                }
+
+                //fposがラベルと重なっているか判定
+                if ((fpos.X > labels[i].Left)
+                    && (fpos.X < labels[i].Right)
+                    && (fpos.Y > labels[i].Top)
+                    && (fpos.Y < labels[i].Bottom))
+                {
+                    //敵の時、ゲームオーバー
+                    if (i < ItemIndex)
+                    {
+                        nextState = State.Gameover;
+                    }
+                    else
+                    {
+                        //アイテム
+                        score += 100;
+                        labelScore.Text = $"{score}";
+                    }
+                    
+              
                 }
 
             }
