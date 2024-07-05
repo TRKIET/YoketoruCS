@@ -38,7 +38,6 @@
             labelScore = new Label();
             labelTimer = new Label();
             tempPlayer = new Label();
-            label1 = new Label();
             tempItem = new Label();
             tempEnemy = new Label();
             SuspendLayout();
@@ -107,7 +106,7 @@
             // 
             labelScore.AutoSize = true;
             labelScore.Font = new Font("Yu Gothic UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            labelScore.Location = new Point(837, 451);
+            labelScore.Location = new Point(431, 9);
             labelScore.Name = "labelScore";
             labelScore.Size = new Size(33, 40);
             labelScore.TabIndex = 5;
@@ -133,16 +132,6 @@
             tempPlayer.Size = new Size(130, 37);
             tempPlayer.TabIndex = 7;
             tempPlayer.Text = "(´・∀・｀ )";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(54, 64);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 8;
-            label1.Text = "label1";
-            label1.Click += label1_Click_2;
             // 
             // tempItem
             // 
@@ -171,7 +160,6 @@
             ClientSize = new Size(944, 501);
             Controls.Add(tempEnemy);
             Controls.Add(tempItem);
-            Controls.Add(label1);
             Controls.Add(tempPlayer);
             Controls.Add(labelTimer);
             Controls.Add(labelScore);
@@ -197,7 +185,6 @@
         private Label labelScore;
         private Label labelTimer;
         private Label tempPlayer;
-        private Label label1;
         private Label tempItem;
         private Label tempEnemy;
     }
