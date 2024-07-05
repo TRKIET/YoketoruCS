@@ -22,6 +22,13 @@ namespace YoketoruCS
 
         Label[] labels = new Label[LabelMax];
 
+        static Random random = new Random();
+
+        int[] vx = new int[LabelMax];
+        int[] vy = new int[LabelMax];
+
+        static int SpeedMax => 10;
+
 
         enum State
         {
@@ -50,38 +57,46 @@ namespace YoketoruCS
             {
                 labels[i] = new Label();
                 labels[i].AutoSize = true;
+                labels[i].Visible = false;
                 Controls.Add(labels[i]);
+
+                tempPlayer.Visible = false;
+                tempEnemy.Visible = false;
+                tempItem.Visible = false;
 
                 //Text,Font,ForeColorを種類ごとに設定したい
 
-                //プレイヤーの時
-                //iがの時
+               
 
-                //敵の時
-                //iがの時
+
 
                 //アイテムの時
-                //iがの時
-
-
-                if (i == PlayerIndex)
+                //iが???の時
+                if (i > ItemIndex)
                 {
-                    labels[i].Text = labelPlayer.Text;
-                    labels[i].Font = labelPlayer.Font;
-                    labels[i].ForeColor = labelPlayer.ForeColor;
+                    labels[i].Font = tempItem.Font;
+                    labels[i].ForeColor = Color.White;
+                    labels[i].Text = tempItem.Text;
                 }
-                if(i == EnemyIndex) 
+                //敵の時
+                //iが???の時
+                else if (i >= EnemyIndex)
                 {
-                    labels[i].Text= labelEnemy.Text;
-                    labels[i].Font = labelEnemy.Font;
-                    labels[i].ForeColor= labelEnemy.ForeColor;
+                    labels[i].Font = tempItem.Font;
+                    labels[i].ForeColor = Color.White;
+                    labels[i].Text = tempEnemy.Text;
                 }
-                if (i == ItemIndex) 
+                else
+                //プレイヤーの時
+                //iが???の時
                 {
-                    labels[i].Text=labelItem.Text;
-                    labels[i].Font=labelItem.Font;
-                    labels[i].ForeColor=labelItem.ForeColor;
-
+                    labels[i].Font = tempItem.Font;
+                    labels[i].ForeColor = Color.White;
+                    labels[i].Text=tempPlayer.Text;
+                }
+                if (i >= EnemyIndex)
+                {
+                    labels[i].Left = labels[i - 1].Left + labels[i-1].Width;
                 }
 
             }
@@ -91,6 +106,7 @@ namespace YoketoruCS
         {
             InitState();
             UpdateState();
+
         }
 
         void InitState()
@@ -118,6 +134,12 @@ namespace YoketoruCS
                 case State.Game:
                     labelTitle.Visible = false;
                     buttonStart.Visible = false;
+                    for (int i=0;i<LabelMax;i++)
+                    {
+                        labels[i].Visible = true;
+                        vx[i] = random.Next(-SpeedMax, SpeedMax + 1);
+                        vy[i] = random.Next(-SpeedMax, SpeedMax + 1);
+                    }
                     break;
 
                 case State.Gameover:
@@ -153,8 +175,41 @@ namespace YoketoruCS
             {
                 nextState = State.Clear;
             }
+            var fpos = PointToClient(MousePosition);
+            labels[PlayerIndex].Left = fpos.X - labels[PlayerIndex].Width / 2;
+            labels[PlayerIndex].Top = fpos.Y - labels[PlayerIndex ].Height / 2;
+
+            //キャラクターの更新
+            UpdateChrs();
         }
 
+        void UpdateChrs()
+        {
+            for (int i =EnemyIndex; i < LabelMax ; i++) 
+            {
+                labels[i].Left += vx[i];
+                labels[i].Top += vy[i];
+
+                if (labels[i].Left < 0)
+                {
+                    vx[i] = Math.Abs(vx[i]);
+                }
+                else if (labels[i].Left > (ClientSize.Width - labels[i].Width)) 
+                {
+                    vx[i]= -Math.Abs(vx[i]);
+                }
+
+                if (labels[i].Top < 0)
+                {
+                    vy[i] = Math.Abs(vy[i]);
+                }
+                else if (labels[i].Top > (ClientSize.Height - labels[i].Height)) 
+                {
+                    vy[i]= -Math.Abs(vy[i]);
+                }
+
+            }
+        }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {

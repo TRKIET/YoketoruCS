@@ -37,10 +37,10 @@
             labelClear = new Label();
             labelScore = new Label();
             labelTimer = new Label();
-            labelPlayer = new Label();
+            tempPlayer = new Label();
             label1 = new Label();
-            labelItem = new Label();
-            labelEnemy = new Label();
+            tempItem = new Label();
+            tempEnemy = new Label();
             SuspendLayout();
             // 
             // timer1
@@ -124,15 +124,15 @@
             labelTimer.TabIndex = 6;
             labelTimer.Text = "200";
             // 
-            // labelPlayer
+            // tempPlayer
             // 
-            labelPlayer.AutoSize = true;
-            labelPlayer.Font = new Font("Yu Gothic UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelPlayer.Location = new Point(334, 441);
-            labelPlayer.Name = "labelPlayer";
-            labelPlayer.Size = new Size(130, 37);
-            labelPlayer.TabIndex = 7;
-            labelPlayer.Text = "(´・∀・｀ )";
+            tempPlayer.AutoSize = true;
+            tempPlayer.Font = new Font("Yu Gothic UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            tempPlayer.Location = new Point(334, 441);
+            tempPlayer.Name = "tempPlayer";
+            tempPlayer.Size = new Size(130, 37);
+            tempPlayer.TabIndex = 7;
+            tempPlayer.Text = "(´・∀・｀ )";
             // 
             // label1
             // 
@@ -144,35 +144,35 @@
             label1.Text = "label1";
             label1.Click += label1_Click_2;
             // 
-            // labelItem
+            // tempItem
             // 
-            labelItem.AutoSize = true;
-            labelItem.Font = new Font("Yu Gothic UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            labelItem.Location = new Point(525, 428);
-            labelItem.Name = "labelItem";
-            labelItem.Size = new Size(52, 45);
-            labelItem.TabIndex = 9;
-            labelItem.Text = "★";
+            tempItem.AutoSize = true;
+            tempItem.Font = new Font("Yu Gothic UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            tempItem.Location = new Point(525, 428);
+            tempItem.Name = "tempItem";
+            tempItem.Size = new Size(52, 45);
+            tempItem.TabIndex = 9;
+            tempItem.Text = "★";
             // 
-            // labelEnemy
+            // tempEnemy
             // 
-            labelEnemy.AutoSize = true;
-            labelEnemy.Font = new Font("Yu Gothic UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            labelEnemy.Location = new Point(525, 351);
-            labelEnemy.Name = "labelEnemy";
-            labelEnemy.Size = new Size(52, 45);
-            labelEnemy.TabIndex = 10;
-            labelEnemy.Text = "的";
+            tempEnemy.AutoSize = true;
+            tempEnemy.Font = new Font("Yu Gothic UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            tempEnemy.Location = new Point(525, 351);
+            tempEnemy.Name = "tempEnemy";
+            tempEnemy.Size = new Size(52, 45);
+            tempEnemy.TabIndex = 10;
+            tempEnemy.Text = "的";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(944, 501);
-            Controls.Add(labelEnemy);
-            Controls.Add(labelItem);
+            Controls.Add(tempEnemy);
+            Controls.Add(tempItem);
             Controls.Add(label1);
-            Controls.Add(labelPlayer);
+            Controls.Add(tempPlayer);
             Controls.Add(labelTimer);
             Controls.Add(labelScore);
             Controls.Add(labelClear);
@@ -196,9 +196,9 @@
         private Label labelClear;
         private Label labelScore;
         private Label labelTimer;
-        private Label labelPlayer;
+        private Label tempPlayer;
         private Label label1;
-        private Label labelItem;
-        private Label labelEnemy;
+        private Label tempItem;
+        private Label tempEnemy;
     }
 }
