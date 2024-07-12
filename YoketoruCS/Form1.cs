@@ -29,8 +29,8 @@ namespace YoketoruCS
 
         static int SpeedMax => 10;
 
-        int score = 0;
-        int timer = 200;
+        int score ;
+        int timer ;
 
 
         enum State
@@ -246,9 +246,16 @@ namespace YoketoruCS
                         //ƒAƒCƒeƒ€
                         score += 100;
                         labelScore.Text = $"{score}";
+                        labels[i].Enabled = false;
+                        
                     }
-                    
-              
+
+                    if (ItemIndex <= 4) 
+                    {
+                        nextState = State.Clear;
+                    }
+
+          
                 }
 
             }
