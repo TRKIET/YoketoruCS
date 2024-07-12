@@ -40,6 +40,7 @@
             tempPlayer = new Label();
             tempItem = new Label();
             tempEnemy = new Label();
+            labelHighescore = new Label();
             SuspendLayout();
             // 
             // timer1
@@ -121,7 +122,7 @@
             labelTimer.Name = "labelTimer";
             labelTimer.Size = new Size(53, 32);
             labelTimer.TabIndex = 6;
-            labelTimer.Text = "200";
+            labelTimer.Text = "500";
             // 
             // tempPlayer
             // 
@@ -153,11 +154,22 @@
             tempEnemy.TabIndex = 10;
             tempEnemy.Text = "的";
             // 
+            // labelHighescore
+            // 
+            labelHighescore.AutoSize = true;
+            labelHighescore.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelHighescore.Location = new Point(407, 49);
+            labelHighescore.Name = "labelHighescore";
+            labelHighescore.Size = new Size(91, 30);
+            labelHighescore.TabIndex = 11;
+            labelHighescore.Text = "ハイスコア";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(944, 501);
+            Controls.Add(labelHighescore);
             Controls.Add(tempEnemy);
             Controls.Add(tempItem);
             Controls.Add(tempPlayer);
@@ -187,5 +199,6 @@
         private Label tempPlayer;
         private Label tempItem;
         private Label tempEnemy;
+        private Label labelHighescore;
     }
 }

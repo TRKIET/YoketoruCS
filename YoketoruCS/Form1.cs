@@ -29,8 +29,10 @@ namespace YoketoruCS
 
         static int SpeedMax => 10;
 
-        int score ;
-        int timer ;
+        int score;
+        int timer;
+        int itemCount;
+        int HighScore;
 
 
         enum State
@@ -61,7 +63,7 @@ namespace YoketoruCS
                 labels[i] = new Label();
                 labels[i].AutoSize = true;
                 labels[i].Visible = false;
-                Controls.Add(labels[i]);
+                Controls.Add(labels[i]);//ラベル表示(追加)
 
                 tempPlayer.Visible = false;
                 tempEnemy.Visible = false;
@@ -73,7 +75,7 @@ namespace YoketoruCS
 
                 //アイテムの時
                 //iが???の時
-                if (i > ItemIndex)
+                if (i >= ItemIndex)
                 {
                     labels[i].Font = tempItem.Font;
                     labels[i].ForeColor = Color.Black;
@@ -125,11 +127,23 @@ namespace YoketoruCS
                 case State.Title:
                     labelTitle.Visible = true;
                     buttonStart.Visible = true;
+                    labelHighescore.Visible = true;
 
                     labelGameover.Visible = false;
                     buttonToTitle.Visible = false;
                     labelClear.Visible = false;
+
+
+                    //ハイスコア判定
+                    if (score > HighScore)
+                    {
+                        HighScore = score;
+                    }
+                    labelHighescore.Text = $"ハイスコア:{HighScore}";
+
                     break;
+
+
 
 
                 case State.Game:
@@ -144,7 +158,8 @@ namespace YoketoruCS
                         labels[i].Top = random.Next(0, ClientSize.Height - labels[i].Height);
                     }
                     score = 0;
-                    timer = 200;
+                    timer = 500;
+                    itemCount = ItemMax;
                     break;
 
                 case State.Gameover:
@@ -193,22 +208,29 @@ namespace YoketoruCS
             timer--;
             labelTimer.Text = $"{timer}";
 
-            if(timer<=0)
+            if (timer <= 0)
             {
                 nextState = State.Gameover;
-            }            
-            
+            }
+
 
         }
 
         void UpdateChrs()
         {
-            var fpos =PointToClient(MousePosition);
+            var fpos = PointToClient(MousePosition);
 
 
-            //敵とアイテムの移動
+
+            //敵とアイテムの移動と跳ね返り処理
             for (int i = EnemyIndex; i < LabelMax; i++)
             {
+                // 非表示のラベルは、処理をキャンセル
+                if (!labels[i].Visible)
+                {
+                    continue;
+                }
+
                 labels[i].Left += vx[i];
                 labels[i].Top += vy[i];
 
@@ -246,16 +268,18 @@ namespace YoketoruCS
                         //アイテム
                         score += 100;
                         labelScore.Text = $"{score}";
-                        labels[i].Enabled = false;
-                        
-                    }
+                        labels[i].Visible = false;
 
-                    if (ItemIndex <= 4) 
+
+
+                    }
+                    itemCount--;
+                    if (itemCount <= 0)
                     {
                         nextState = State.Clear;
                     }
 
-          
+
                 }
 
             }
